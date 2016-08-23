@@ -10,5 +10,5 @@ var argv = require('yargs')
     .describe('o', 'Output file with definitions')
     .demand('f')
     .argv;
-npp2ts_1.app(argv.file, argv.out);
+npp2ts_1.npp2ts(argv.file, argv.out);
 //# sourceMappingURL=cli.js.map

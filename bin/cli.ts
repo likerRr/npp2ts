@@ -2,7 +2,7 @@
 
 declare let require: any;
 
-import {app} from '../npp2ts';
+import {npp2ts} from '../npp2ts';
 
 const argv = require('yargs')
   .usage('Usage: $0 <cmd> [args]')
@@ -14,4 +14,4 @@ const argv = require('yargs')
   .demand('f')
   .argv;
 
-app(argv.file, argv.out);
+npp2ts(argv.file, argv.out);
