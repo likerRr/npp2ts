@@ -8,7 +8,7 @@ import {Drawer} from './src/definition-drawer/drawer';
 import {NamespaceDrawer} from './src/definition-drawer/namespace-drawer';
 import fs = require('fs');
 
-export function app(modelFile: string, outputFile: string = './protos.d.ts') {
+export function npp2ts(modelFile: string, outputFile: string = './protos.d.ts') {
   let model = JSON.parse(fs.readFileSync(modelFile).toString());
   let protosModel = new ProtosModel(model);
 
