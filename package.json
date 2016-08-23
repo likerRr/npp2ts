@@ -1,6 +1,6 @@
 {
   "name": "npp2ts",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "scripts": {
     "typings": "typings install"
   },
