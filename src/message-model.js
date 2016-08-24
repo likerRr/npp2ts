@@ -45,11 +45,11 @@ var MessageModel = (function (_super) {
         this.enums = (message.enums || []).map(function (enm) { return new EnumModel(enm, _this); });
     }
     MessageModel.prototype.getNameRecursiveUp = function (name) {
-        var innerMessage = this.messages.find(function (msg) { return msg.name === name; }), innerEnum;
+        var innerMessage = find(this.messages, function (msg) { return msg.name === name; }), innerEnum;
         if (innerMessage) {
             return innerMessage.rootMessage.name;
         }
-        innerEnum = this.enums.find(function (enm) { return enm.name === name; });
+        innerEnum = find(this.enums, function (enm) { return enm.name === name; });
         if (innerEnum) {
             return innerEnum.rootMessage.name;
         }
@@ -68,4 +68,9 @@ var EnumModel = (function (_super) {
     return EnumModel;
 }(BaseMessageModel));
 exports.EnumModel = EnumModel;
+function find(arr, predicate) {
+    var result = null;
+    arr.some(function (val, idx) { return predicate(val, idx) ? ((result = val), true) : false; });
+    return result;
+}
 //# sourceMappingURL=message-model.js.map

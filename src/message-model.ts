@@ -46,14 +46,14 @@ export class MessageModel extends BaseMessageModel {
   }
 
   getNameRecursiveUp(name) {
-    let innerMessage = this.messages.find(msg => msg.name === name),
+    let innerMessage = find(this.messages, msg => msg.name === name),
       innerEnum;
 
     if (innerMessage) {
       return innerMessage.rootMessage.name;
     }
 
-    innerEnum = this.enums.find(enm => enm.name === name);
+    innerEnum = find(this.enums, enm => enm.name === name);
 
     if (innerEnum) {
       return innerEnum.rootMessage.name;
@@ -91,4 +91,12 @@ interface FieldType {
   type: string;
   name: string;
   id: number;
+}
+
+function find<T>(arr: T[], predicate: (val: T, idx: number) => boolean) {
+  let result: T = null;
+
+  arr.some((val: T, idx: number) => predicate(val, idx) ? ((result = val), true) : false);
+
+  return result;
 }

@@ -21,6 +21,6 @@ try {
     }
 }
 catch (e) {
-    process.stderr.write("An error occurred while building definitions: " + e.message);
+    process.stderr.write("An error occurred: " + e.message);
 }
 //# sourceMappingURL=cli.js.map
