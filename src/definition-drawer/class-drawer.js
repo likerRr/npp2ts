@@ -13,7 +13,7 @@ var ClassDrawer = (function (_super) {
     }
     Object.defineProperty(ClassDrawer.prototype, "template", {
         get: function () {
-            return (_a = ["\nexport namespace ", " {\n  export class ", " extends ProtoBufMessage {\n    constructor(data: ", "Data);\n    static decode(buffer?: any, length?: number | string, enc?: string): ", ";\n    ", "\n  }\n  \n  interface ", "Data {\n    ", "\n  }\n}\n    "], _a.raw = ["\nexport namespace ", " {\n  export class ", " extends ProtoBufMessage {\n    constructor(data: ", "Data);\n    static decode(buffer?: any, length?: number | string, enc?: string): ", ";\n    ", "\n  }\n  \n  interface ", "Data {\n    ", "\n  }\n}\n    "], this.builder(_a, 'namespace', 'className', 'className', 'className', 'classProps', 'className', 'dataProps'));
+            return (_a = ["\nexport namespace ", " {\n  export class ", " extends ProtoBufMessage {\n    constructor(data: ", "Data);\n    static decode(buffer?: any, length?: number | string, enc?: string): ", ";\n    ", "\n  }\n  \n  export interface ", "Data {\n    ", "\n  }\n}\n    "], _a.raw = ["\nexport namespace ", " {\n  export class ", " extends ProtoBufMessage {\n    constructor(data: ", "Data);\n    static decode(buffer?: any, length?: number | string, enc?: string): ", ";\n    ", "\n  }\n  \n  export interface ", "Data {\n    ", "\n  }\n}\n    "], this.builder(_a, 'namespace', 'className', 'className', 'className', 'classProps', 'className', 'dataProps'));
             var _a;
         },
         enumerable: true,

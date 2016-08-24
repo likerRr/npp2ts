@@ -1,7 +1,4 @@
-declare var require: any;
-
 import {Drawer} from './definition-drawer/drawer';
-const wf = require('writefile');
 
 export class DrawerManager {
   drawers: Drawer[] = [];
@@ -10,7 +7,7 @@ export class DrawerManager {
     this.drawers = drawers;
   }
 
-  saveToFile(fileName: string) {
+  makeTemplate(): string {
     const lines: any[] = [];
 
     lines.push(`
@@ -50,6 +47,6 @@ declare abstract class ProtoBufMessage {
 `);
     lines.push(...this.drawers.map(entity => entity.draw()));
 
-    wf(fileName, lines.join('\n'));
+    return lines.join('\n');
   }
 }

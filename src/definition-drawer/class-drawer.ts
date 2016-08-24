@@ -16,7 +16,7 @@ export namespace ${'namespace'} {
     ${'classProps'}
   }
   
-  interface ${'className'}Data {
+  export interface ${'className'}Data {
     ${'dataProps'}
   }
 }
