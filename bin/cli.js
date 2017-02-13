@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 "use strict";
-var npp2ts_1 = require('../npp2ts');
-var wf = require('writefile');
-var argv = require('yargs')
+const npp2ts_1 = require("../npp2ts");
+const wf = require('writefile');
+const argv = require('yargs')
     .usage('Usage: $0 <cmd> [args]')
     .alias('f', 'file')
     .alias('o', 'out')
@@ -12,7 +12,7 @@ var argv = require('yargs')
     .demand('f')
     .argv;
 try {
-    var dts = npp2ts_1.npp2ts(argv.file);
+    const dts = npp2ts_1.npp2ts(argv.file);
     if (argv.out) {
         wf(argv.out, dts);
     }
@@ -21,6 +21,6 @@ try {
     }
 }
 catch (e) {
-    process.stderr.write("An error occurred: " + e.message);
+    process.stderr.write(`An error occurred: ${e.message}`);
 }
 //# sourceMappingURL=cli.js.map

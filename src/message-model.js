@@ -1,76 +1,61 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var BaseMessageModel = (function () {
-    function BaseMessageModel(name, root) {
+class BaseMessageModel {
+    constructor(name, root) {
         this.name = name;
         this.rootMessage = root;
     }
-    Object.defineProperty(BaseMessageModel.prototype, "namespace", {
-        get: function () {
-            var rootMessage = this.rootMessage, names = [];
-            if (!rootMessage) {
-                return this.name;
-            }
-            while (rootMessage) {
-                names.unshift(rootMessage.name);
-                rootMessage = rootMessage.rootMessage;
-            }
-            return names.join('.');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    BaseMessageModel.prototype.getParent = function (prop) {
+    get namespace() {
+        let rootMessage = this.rootMessage, names = [];
+        if (!rootMessage) {
+            return this.name;
+        }
+        while (rootMessage) {
+            names.unshift(rootMessage.name);
+            rootMessage = rootMessage.rootMessage;
+        }
+        return names.join('.');
+    }
+    getParent(prop) {
         return this.rootMessage ? this.rootMessage[prop] : null;
-    };
-    return BaseMessageModel;
-}());
+    }
+}
 exports.BaseMessageModel = BaseMessageModel;
-var MessageModel = (function (_super) {
-    __extends(MessageModel, _super);
-    function MessageModel(message, root) {
-        var _this = this;
-        _super.call(this, message.name, root);
+class MessageModel extends BaseMessageModel {
+    constructor(message, root) {
+        super(message.name, root);
         this.fields = [];
         this.messages = [];
         this.enums = [];
         this.fields = message.fields;
         if (message.messages) {
-            this.messages = message.messages.map(function (message) { return new MessageModel(message, _this); });
+            this.messages = message.messages.map(message => new MessageModel(message, this));
         }
-        this.enums = (message.enums || []).map(function (enm) { return new EnumModel(enm, _this); });
+        this.enums = (message.enums || []).map(enm => new EnumModel(enm, this));
     }
-    MessageModel.prototype.getNameRecursiveUp = function (name) {
-        var innerMessage = find(this.messages, function (msg) { return msg.name === name; }), innerEnum;
+    getNameRecursiveUp(name) {
+        let innerMessage = find(this.messages, msg => msg.name === name), innerEnum;
         if (innerMessage) {
             return innerMessage.rootMessage.name;
         }
-        innerEnum = find(this.enums, function (enm) { return enm.name === name; });
+        innerEnum = find(this.enums, enm => enm.name === name);
         if (innerEnum) {
             return innerEnum.rootMessage.name;
         }
         return this.rootMessage ? this.rootMessage.getNameRecursiveUp(name) : '';
-    };
-    return MessageModel;
-}(BaseMessageModel));
+    }
+}
 exports.MessageModel = MessageModel;
-var EnumModel = (function (_super) {
-    __extends(EnumModel, _super);
-    function EnumModel(enm, root) {
-        _super.call(this, enm.name, root);
+class EnumModel extends BaseMessageModel {
+    constructor(enm, root) {
+        super(enm.name, root);
         this.name = enm.name;
         this.values = enm.values;
     }
-    return EnumModel;
-}(BaseMessageModel));
+}
 exports.EnumModel = EnumModel;
 function find(arr, predicate) {
-    var result = null;
-    arr.some(function (val, idx) { return predicate(val, idx) ? ((result = val), true) : false; });
+    let result = null;
+    arr.some((val, idx) => predicate(val, idx) ? ((result = val), true) : false);
     return result;
 }
 //# sourceMappingURL=message-model.js.map

@@ -1,11 +1,10 @@
 "use strict";
-function getTSType(protoType, isArray) {
-    if (isArray === void 0) { isArray = false; }
+function getTSType(protoType, isArray = false) {
     if (isComposite(protoType)) {
         // composite type
-        return "" + protoType + (isArray ? '[]' : '');
+        return `${protoType}${isArray ? '[]' : ''}`;
     }
-    return "" + transformProtoType(protoType) + (isArray ? '[]' : '');
+    return `${transformProtoType(protoType)}${isArray ? '[]' : ''}`;
 }
 exports.getTSType = getTSType;
 function isComposite(protoType) {

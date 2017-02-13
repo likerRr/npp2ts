@@ -1,17 +1,15 @@
 "use strict";
-var message_model_1 = require('./message-model');
-var ProtosModel = (function () {
-    function ProtosModel(jsonModel) {
+const message_model_1 = require("./message-model");
+class ProtosModel {
+    constructor(jsonModel) {
         this.messages = [];
         this.packageName = '';
         this.packageName = jsonModel.package;
         this.buildMessages(jsonModel.messages);
     }
-    ProtosModel.prototype.buildMessages = function (messages) {
-        var _this = this;
-        messages.forEach(function (msg) { return _this.messages.push(new message_model_1.MessageModel(msg)); });
-    };
-    return ProtosModel;
-}());
+    buildMessages(messages) {
+        messages.forEach(msg => this.messages.push(new message_model_1.MessageModel(msg)));
+    }
+}
 exports.ProtosModel = ProtosModel;
 //# sourceMappingURL=protos-model.js.map
