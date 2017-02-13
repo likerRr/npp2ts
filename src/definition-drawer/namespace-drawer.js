@@ -44,7 +44,7 @@ export namespace ${this.ns} {
     }
     get enmTemplate() {
         return this.builder `
-  export const enum ${'enumName'} {
+  export enum ${'enumName'} {
     ${'properties'}
   }
     `;
