@@ -1,9 +1,8 @@
 "use strict";
-var EntityDef = (function () {
-    function EntityDef() {
+class EntityDef {
+    constructor() {
         this.name = '';
     }
-    return EntityDef;
-}());
+}
 exports.EntityDef = EntityDef;
 //# sourceMappingURL=entity-def.js.map
