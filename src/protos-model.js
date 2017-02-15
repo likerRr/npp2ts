@@ -1,5 +1,5 @@
 "use strict";
-var message_model_1 = require('./message-model');
+var message_model_1 = require("./message-model");
 var ProtosModel = (function () {
     function ProtosModel(jsonModel) {
         this.messages = [];
