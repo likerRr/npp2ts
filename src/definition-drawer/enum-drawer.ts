@@ -10,7 +10,7 @@ export class EnumDrawer extends Drawer {
   get template() {
     return this.builder`
 export namespace ${'namespace'} {
-  export const enum ${'enumName'} {
+  export enum ${'enumName'} {
     ${'properties'}
   }
 }

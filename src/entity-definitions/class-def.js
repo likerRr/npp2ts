@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var entity_def_1 = require('./abstract/entity-def');
+var entity_def_1 = require("./abstract/entity-def");
 var ClassDef = (function (_super) {
     __extends(ClassDef, _super);
     function ClassDef(data) {
-        _super.call(this);
-        this.namespace = '';
-        this.name = data.name;
-        this.namespace = data.namespace;
-        this.properties = data.properties;
+        var _this = _super.call(this) || this;
+        _this.namespace = '';
+        _this.name = data.name;
+        _this.namespace = data.namespace;
+        _this.properties = data.properties;
+        return _this;
     }
     return ClassDef;
 }(entity_def_1.EntityDef));

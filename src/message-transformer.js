@@ -1,9 +1,9 @@
 "use strict";
-var class_def_1 = require('./entity-definitions/class-def');
-var enum_def_1 = require('./entity-definitions/enum-def');
-var class_property_def_1 = require('./entity-definitions/class-property-def');
-var proto_type_resolver_1 = require('./proto-type-resolver');
-var enum_value_def_1 = require('./entity-definitions/enum-value-def');
+var class_def_1 = require("./entity-definitions/class-def");
+var enum_def_1 = require("./entity-definitions/enum-def");
+var class_property_def_1 = require("./entity-definitions/class-property-def");
+var proto_type_resolver_1 = require("./proto-type-resolver");
+var enum_value_def_1 = require("./entity-definitions/enum-value-def");
 var MessageTransformer = (function () {
     function MessageTransformer() {
         this.classesDef = [];

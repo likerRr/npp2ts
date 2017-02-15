@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var drawer_1 = require('./drawer');
-var class_def_1 = require('../entity-definitions/class-def');
-var enum_def_1 = require('../entity-definitions/enum-def');
+var drawer_1 = require("./drawer");
+var class_def_1 = require("../entity-definitions/class-def");
+var enum_def_1 = require("../entity-definitions/enum-def");
 var NamespaceDrawer = (function (_super) {
     __extends(NamespaceDrawer, _super);
     function NamespaceDrawer(ns, ents) {
-        _super.call(this);
-        this.ns = ns;
-        this.ents = ents;
+        var _this = _super.call(this) || this;
+        _this.ns = ns;
+        _this.ents = ents;
+        return _this;
     }
     Object.defineProperty(NamespaceDrawer.prototype, "template", {
         get: function () {
@@ -46,7 +47,7 @@ var NamespaceDrawer = (function (_super) {
     });
     Object.defineProperty(NamespaceDrawer.prototype, "enmTemplate", {
         get: function () {
-            return (_a = ["\n  export const enum ", " {\n    ", "\n  }\n    "], _a.raw = ["\n  export const enum ", " {\n    ", "\n  }\n    "], this.builder(_a, 'enumName', 'properties'));
+            return (_a = ["\n  export enum ", " {\n    ", "\n  }\n    "], _a.raw = ["\n  export enum ", " {\n    ", "\n  }\n    "], this.builder(_a, 'enumName', 'properties'));
             var _a;
         },
         enumerable: true,
@@ -56,13 +57,13 @@ var NamespaceDrawer = (function (_super) {
         return this.enmTemplate({
             enumName: enm.name,
             namespace: enm.namespace,
-            properties: "" + enm.values.map(function (prop) { return ("" + prop.name + (prop.val !== null ? " = " + prop.val : '') + ","); }).join('\n    ')
+            properties: "" + enm.values.map(function (prop) { return "" + prop.name + (prop.val !== null ? " = " + prop.val : '') + ","; }).join('\n    ')
         });
     };
     NamespaceDrawer.prototype.buildClsTemplate = function (cls) {
         return this.clsTemplate({
             className: cls.name,
-            dataProps: "" + cls.properties.map(function (prop) { return ("" + prop.name + (prop.isOptional ? '?' : '') + ": " + prop.type + ";"); }).join('\n    '),
+            dataProps: "" + cls.properties.map(function (prop) { return "" + prop.name + (prop.isOptional ? '?' : '') + ": " + prop.type + ";"; }).join('\n    '),
             classProps: "" + cls.properties.map(function (prop) {
                 var getterName = toCameCase("get_" + prop.name), setterName = toCameCase("set_" + prop.name);
                 return prop.name + ": " + prop.type + ";\n    " + getterName + "(): " + prop.type + ";\n    " + setterName + "(value: any, noAssert?: boolean);";
