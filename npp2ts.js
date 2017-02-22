@@ -9,9 +9,9 @@ function npp2ts(modelFile) {
     var protosModel = new protos_model_1.ProtosModel(model);
     var messageTransformer = new message_transformer_1.MessageTransformer();
     var transformMessageRecursive = function (message) {
-        // if (message.fields.length > 0) {
-        messageTransformer.addClass(message);
-        // }
+        if (message.fields.length > 0 || (message.enums.length == 0 && message.messages.length == 0)) {
+            messageTransformer.addClass(message);
+        }
         if (message.enums.length > 0) {
             message.enums.forEach(function (enm) { return messageTransformer.addEnum(enm); });
         }

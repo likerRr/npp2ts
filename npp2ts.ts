@@ -13,9 +13,9 @@ export function npp2ts(modelFile: string) {
   let messageTransformer = new MessageTransformer();
 
   const transformMessageRecursive = (message: MessageModel) => {
-    // if (message.fields.length > 0) {
+    if (message.fields.length > 0 || (message.enums.length == 0 && message.messages.length == 0)) {
       messageTransformer.addClass(message);
-    // }
+    }
 
     if (message.enums.length > 0) {
       message.enums.forEach(enm => messageTransformer.addEnum(enm));
