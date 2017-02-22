@@ -1,4 +1,3 @@
-/// <reference path="./typings/index.d.ts" />
 "use strict";
 const protos_model_1 = require("./src/protos-model");
 const message_transformer_1 = require("./src/message-transformer");
@@ -10,9 +9,9 @@ function npp2ts(modelFile) {
     let protosModel = new protos_model_1.ProtosModel(model);
     let messageTransformer = new message_transformer_1.MessageTransformer();
     const transformMessageRecursive = (message) => {
-        if (message.fields.length > 0) {
-            messageTransformer.addClass(message);
-        }
+        // if (message.fields.length > 0) {
+        messageTransformer.addClass(message);
+        // }
         if (message.enums.length > 0) {
             message.enums.forEach(enm => messageTransformer.addEnum(enm));
         }

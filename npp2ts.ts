@@ -1,5 +1,3 @@
-/// <reference path="./typings/index.d.ts" />
-
 import {ProtosModel} from './src/protos-model';
 import {MessageTransformer} from './src/message-transformer';
 import {MessageModel} from './src/message-model';
@@ -15,9 +13,9 @@ export function npp2ts(modelFile: string) {
   let messageTransformer = new MessageTransformer();
 
   const transformMessageRecursive = (message: MessageModel) => {
-    if (message.fields.length > 0) {
+    // if (message.fields.length > 0) {
       messageTransformer.addClass(message);
-    }
+    // }
 
     if (message.enums.length > 0) {
       message.enums.forEach(enm => messageTransformer.addEnum(enm));
