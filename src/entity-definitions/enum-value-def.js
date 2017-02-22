@@ -4,14 +4,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var entity_def_1 = require('./abstract/entity-def');
+var entity_def_1 = require("./abstract/entity-def");
 var EnumValueDef = (function (_super) {
     __extends(EnumValueDef, _super);
     function EnumValueDef(name, val) {
-        _super.call(this);
-        this.val = null;
-        this.name = name;
-        this.val = val;
+        var _this = _super.call(this) || this;
+        _this.val = null;
+        _this.name = name;
+        _this.val = val;
+        return _this;
     }
     return EnumValueDef;
 }(entity_def_1.EntityDef));
