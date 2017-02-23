@@ -2,7 +2,7 @@
   "name": "npp2ts",
   "version": "0.1.6",
   "scripts": {
-    "typings": "typings install"
+    "build": "tsc"
   },
   "bin": {
     "npp2ts": "./bin/cli.js"
@@ -10,10 +10,10 @@
   "main": "npp2ts.js",
   "dependencies": {
     "writefile": "0.2.8",
-    "yargs": "5.0.0",
-    "typescript": "1.8.10"
+    "yargs": "5.0.0"
   },
   "devDependencies": {
-    "typings": "^1.3.2"
+    "@types/node": "^7.0.5",
+    "typescript": "^2.2.1"
   }
 }

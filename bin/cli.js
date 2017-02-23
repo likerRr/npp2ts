@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 "use strict";
-var npp2ts_1 = require('../npp2ts');
+Object.defineProperty(exports, "__esModule", { value: true });
+var npp2ts_1 = require("../npp2ts");
 var wf = require('writefile');
 var argv = require('yargs')
     .usage('Usage: $0 <cmd> [args]')

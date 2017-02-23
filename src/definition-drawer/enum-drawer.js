@@ -1,15 +1,22 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var drawer_1 = require('./drawer');
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var drawer_1 = require("./drawer");
 var EnumDrawer = (function (_super) {
     __extends(EnumDrawer, _super);
     function EnumDrawer(enm) {
-        _super.call(this);
-        this.enm = enm;
+        var _this = _super.call(this) || this;
+        _this.enm = enm;
+        return _this;
     }
     Object.defineProperty(EnumDrawer.prototype, "template", {
         get: function () {
@@ -23,7 +30,7 @@ var EnumDrawer = (function (_super) {
         return this.template({
             enumName: this.enm.name,
             namespace: this.enm.namespace,
-            properties: "" + this.enm.values.map(function (prop) { return ("" + prop.name + (prop.val !== null ? " = " + prop.val : '') + ","); }).join('\n    ')
+            properties: "" + this.enm.values.map(function (prop) { return "" + prop.name + (prop.val !== null ? " = " + prop.val : '') + ","; }).join('\n    ')
         });
     };
     return EnumDrawer;

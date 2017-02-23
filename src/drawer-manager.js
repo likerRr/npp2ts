@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var DrawerManager = (function () {
     function DrawerManager(drawers) {
         this.drawers = [];

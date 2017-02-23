@@ -1,9 +1,15 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
 var BaseMessageModel = (function () {
     function BaseMessageModel(name, root) {
         this.name = name;
@@ -33,16 +39,16 @@ exports.BaseMessageModel = BaseMessageModel;
 var MessageModel = (function (_super) {
     __extends(MessageModel, _super);
     function MessageModel(message, root) {
-        var _this = this;
-        _super.call(this, message.name, root);
-        this.fields = [];
-        this.messages = [];
-        this.enums = [];
-        this.fields = message.fields;
+        var _this = _super.call(this, message.name, root) || this;
+        _this.fields = [];
+        _this.messages = [];
+        _this.enums = [];
+        _this.fields = message.fields;
         if (message.messages) {
-            this.messages = message.messages.map(function (message) { return new MessageModel(message, _this); });
+            _this.messages = message.messages.map(function (message) { return new MessageModel(message, _this); });
         }
-        this.enums = (message.enums || []).map(function (enm) { return new EnumModel(enm, _this); });
+        _this.enums = (message.enums || []).map(function (enm) { return new EnumModel(enm, _this); });
+        return _this;
     }
     MessageModel.prototype.getNameRecursiveUp = function (name) {
         var innerMessage = find(this.messages, function (msg) { return msg.name === name; }), innerEnum;
@@ -61,9 +67,10 @@ exports.MessageModel = MessageModel;
 var EnumModel = (function (_super) {
     __extends(EnumModel, _super);
     function EnumModel(enm, root) {
-        _super.call(this, enm.name, root);
-        this.name = enm.name;
-        this.values = enm.values;
+        var _this = _super.call(this, enm.name, root) || this;
+        _this.name = enm.name;
+        _this.values = enm.values;
+        return _this;
     }
     return EnumModel;
 }(BaseMessageModel));
