@@ -1,5 +1,3 @@
-/// <reference path="./typings/index.d.ts" />
-
 import {ProtosModel} from './src/protos-model';
 import {MessageTransformer} from './src/message-transformer';
 import {MessageModel} from './src/message-model';

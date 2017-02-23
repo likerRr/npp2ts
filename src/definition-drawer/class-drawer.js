@@ -1,15 +1,22 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var drawer_1 = require('./drawer');
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var drawer_1 = require("./drawer");
 var ClassDrawer = (function (_super) {
     __extends(ClassDrawer, _super);
     function ClassDrawer(cls) {
-        _super.call(this);
-        this.cls = cls;
+        var _this = _super.call(this) || this;
+        _this.cls = cls;
+        return _this;
     }
     Object.defineProperty(ClassDrawer.prototype, "template", {
         get: function () {
@@ -23,7 +30,7 @@ var ClassDrawer = (function (_super) {
         return this.template({
             className: this.cls.name,
             namespace: this.cls.namespace,
-            dataProps: "" + this.cls.properties.map(function (prop) { return ("" + prop.name + (prop.isOptional ? '?' : '') + ": " + prop.type + ";"); }).join('\n    '),
+            dataProps: "" + this.cls.properties.map(function (prop) { return "" + prop.name + (prop.isOptional ? '?' : '') + ": " + prop.type + ";"; }).join('\n    '),
             classProps: "" + this.cls.properties.map(function (prop) {
                 var getterName = toCameCase("get_" + prop.name), setterName = toCameCase("set_" + prop.name);
                 return prop.name + ": " + prop.type + ";\n    " + getterName + "(): " + prop.type + ";\n    " + setterName + "(value: any, noAssert?: boolean);";

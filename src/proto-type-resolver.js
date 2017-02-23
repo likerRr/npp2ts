@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function getTSType(protoType, isArray) {
     if (isArray === void 0) { isArray = false; }
     if (isComposite(protoType)) {
