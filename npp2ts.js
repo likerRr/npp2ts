@@ -10,7 +10,8 @@ function npp2ts(modelFile) {
     var protosModel = new protos_model_1.ProtosModel(model);
     var messageTransformer = new message_transformer_1.MessageTransformer();
     var transformMessageRecursive = function (message) {
-        if (message.fields.length > 0) {
+        // add only messages with fields or without enums and messages included
+        if (message.fields.length > 0 || (message.enums.length === 0 && message.messages.length === 0)) {
             messageTransformer.addClass(message);
         }
         if (message.enums.length > 0) {
