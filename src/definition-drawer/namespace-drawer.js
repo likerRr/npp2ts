@@ -53,7 +53,7 @@ var NamespaceDrawer = (function (_super) {
     });
     Object.defineProperty(NamespaceDrawer.prototype, "enmTemplate", {
         get: function () {
-            return (_a = ["\n  export const enum ", " {\n    ", "\n  }\n    "], _a.raw = ["\n  export const enum ", " {\n    ", "\n  }\n    "], this.builder(_a, 'enumName', 'properties'));
+            return (_a = ["\n  export enum ", " {\n    ", "\n  }\n    "], _a.raw = ["\n  export enum ", " {\n    ", "\n  }\n    "], this.builder(_a, 'enumName', 'properties'));
             var _a;
         },
         enumerable: true,

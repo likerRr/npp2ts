@@ -1,6 +1,7 @@
 import {Drawer} from './drawer';
 import {EnumDef} from '../entity-definitions/enum-def';
 
+// TODO is not used
 export class EnumDrawer extends Drawer {
 
   constructor(private enm: EnumDef) {
@@ -10,7 +11,7 @@ export class EnumDrawer extends Drawer {
   get template() {
     return this.builder`
 export namespace ${'namespace'} {
-  export const enum ${'enumName'} {
+  export enum ${'enumName'} {
     ${'properties'}
   }
 }

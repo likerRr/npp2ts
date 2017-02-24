@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var drawer_1 = require("./drawer");
+// TODO is not used
 var EnumDrawer = (function (_super) {
     __extends(EnumDrawer, _super);
     function EnumDrawer(enm) {
@@ -20,7 +21,7 @@ var EnumDrawer = (function (_super) {
     }
     Object.defineProperty(EnumDrawer.prototype, "template", {
         get: function () {
-            return (_a = ["\nexport namespace ", " {\n  export const enum ", " {\n    ", "\n  }\n}\n    "], _a.raw = ["\nexport namespace ", " {\n  export const enum ", " {\n    ", "\n  }\n}\n    "], this.builder(_a, 'namespace', 'enumName', 'properties'));
+            return (_a = ["\nexport namespace ", " {\n  export enum ", " {\n    ", "\n  }\n}\n    "], _a.raw = ["\nexport namespace ", " {\n  export enum ", " {\n    ", "\n  }\n}\n    "], this.builder(_a, 'namespace', 'enumName', 'properties'));
             var _a;
         },
         enumerable: true,

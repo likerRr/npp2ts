@@ -1,6 +1,7 @@
 import {Drawer} from './drawer';
 import {ClassDef} from '../entity-definitions/class-def';
 
+// TODO is not used
 export class ClassDrawer extends Drawer {
 
   constructor(private cls: ClassDef) {

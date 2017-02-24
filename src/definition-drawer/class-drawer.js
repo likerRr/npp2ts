@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var drawer_1 = require("./drawer");
+// TODO is not used
 var ClassDrawer = (function (_super) {
     __extends(ClassDrawer, _super);
     function ClassDrawer(cls) {
