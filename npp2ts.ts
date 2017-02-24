@@ -13,7 +13,8 @@ export function npp2ts(modelFile: string) {
   let messageTransformer = new MessageTransformer();
 
   const transformMessageRecursive = (message: MessageModel) => {
-    if (message.fields.length > 0) {
+    // add only messages with fields or without enums and messages included
+    if (message.fields.length > 0 || (message.enums.length === 0 && message.messages.length === 0)) {
       messageTransformer.addClass(message);
     }
 
