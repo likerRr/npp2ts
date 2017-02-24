@@ -1,5 +1,5 @@
 # npp2ts
-Typescript definitions generator for [node-pogo-protos](https://github.com/cyraxx/node-pogo-protos)
+Typescript definitions generator for [node-pogo-protos](https://github.com/cyraxx/node-pogo-protos) (while it utilizes [5th](https://github.com/cyraxx/node-pogo-protos/issues/11) version of [protobuf](https://github.com/dcodeIO/protobuf.js))
 
 # Install
 
